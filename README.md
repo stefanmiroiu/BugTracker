@@ -1,1 +1,24 @@
 # Proiect-Tehnologii-Web---Echipa-NovaWeb
+
+Specificații:
+Pentru a asigura o interfață RESTful, conform specificațiilor, vom utiliza mediul de execuție Node.js. Pentru a structura și a gestiona rutele API eficient, vom implementa framework-ul Express.js, pentru flexibilitatea sa în construirea de servicii web.
+Stocarea informațiilor esențiale (utilizatori, proiecte, bug-uri) se va realiza într-o bază de date relațională, alegând PostgreSQL. Accesul la date se va face exclusiv prin intermediul unui Object-Relational Mapper (ORM), și anume Sequelize, care facilitează operațiunile de persistență prin intermediul paradigmei JavaScript, eliminând necesitatea interacțiunii directe cu SQL-ul.
+Mecanismul de identificare și autorizare a accesului va fi implementat folosind JSON Web Tokens (JWT). Această soluție standardizată ne permite să menținem API-ul stateless (fără sesiune pe server), asigurând în același timp un nivel adecvat de securitate pentru toate tranzacțiile protejate.
+Conform cerinței de a utiliza un framework bazat pe componente, am optat pentru React.js. Această bibliotecă permite dezvoltarea rapidă a unei Single Page Application (SPA), oferind fluiditate și o experiență de utilizare optimă. Navigarea internă va fi gestionată de React Router. Conexiunea între frontend și API-ul Node.js se va realiza prin biblioteci de efectuare a cererilor HTTP, precum Axios.
+Aplicația finală va fi deployed folosind serviciile Azure pentru a o face accesibilă public.
+
+Planul de proiect:
+Pagina de intro:
+Vor exista 2 butoane de înregistrare sau conectare și logo-ul aplicației.
+
+Pagina de înregistrare:
+Va fi un formular cu câmpurile nume, prenume, mail și rol(MP sau TST). Dacă va fi selectat MP va mai apărea un câmp de unde să-și selecteze echipa dintr-o listă sau va avea opțiunea de a adăuga o altă echipă dacă nu este deja în listă. Dacă va alege ultima opțiune va mai apărea un câmp în care să pună numele echipei. Formularul va avea validări pe toate câmpurile (câmpul să nu fie gol, să se respecte un tipar de mail, etc.) și va trata excepțiile.
+
+Pagina de conectare:
+Aici, cei care au deja cont, vor trebui să se conecteze printr-un formular cu câmpurile mail și parolă.
+
+Interfață TST:
+Va apărea inițial o listă cu echipele ce au proiecte, iar fiecărei echipei îi este asignat un buton care va duce către proiecte. Proiectele vor fi afișate ca și echipele, doar ca acum butonul va fi pentru a se adăuga ca tester la proiect. După ce se adaugă ca și tester o să-i apară o nouă interfață. În partea de sus va fi numele proiectului și o descriere, mai jos vor fi bug-urile deja raportate pentru a le putea vedea și a nu se repeta și un buton de add bug. La apăsarea butonului va apărea un formular cu câmpurile id, severitate, prioritate, descriere și link la commit-ul la care se referă.
+
+Interfață MP:
+Va apărea inițial o listă cu toate proiectele echipei și fiecare va avea un buton de vezi bug-uri. Va apărea o interfață cu bug-urile proiectului, iar fiecare va avea un buton de update status. Acest buton va deschide un formular cu două câmpuri: status și link la commit(acesta nu va fi obligatoriu). Inițial MP-ul va trebui să pună status-ul “In progress” pentru ca să se vadă că se lucrează deja la acel bug, dar și pentru a nu-i permit să mai iau un alt bug până ce nu-l rezolvă sau renunță la acesta. 
