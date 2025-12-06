@@ -16,7 +16,7 @@ async function connectionDB(){
     try{
         await sequelize.authenticate();
         console.log("Conexiunea la baza de date a fost stabilita cu succes!");
-        await sequelize.sync();
+        await sequelize.sync({});
         console.log("Toate modelele au fost sincronizate.");
     }catch(error){
         console.log("Nu s-a putut conecta la baza de date: ",error);

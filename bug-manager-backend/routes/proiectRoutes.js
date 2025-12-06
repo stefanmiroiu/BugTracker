@@ -5,11 +5,11 @@ const protect = require('../middleware/authMiddleware');
 
 router.use(protect);
 
-router.get('/echipe', projectController.getAllTeamsWithProjects);
+router.get('/echipe', proiectController.getAllTeamsWithProjects);
 
-router.get('/echipa', projectController.getMyTeamProjects);
+router.get('/echipa', proiectController.getMyTeamProjects);
 
-router.post('/', projectController.addProject);
+router.post('/', proiectController.addProject);
 
 
 module.exports = router;

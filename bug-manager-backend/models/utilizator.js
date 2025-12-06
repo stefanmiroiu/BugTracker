@@ -33,6 +33,10 @@ const utilizator = sequelize.define('utilizator',{
         type:DataTypes.STRING,
         allowNull:true
     },
+    id_echipa:{
+        type:DataTypes.INTEGER,
+        allowNull:true
+    },
     status:{
         type:DataTypes.ENUM('LIBER', 'OCUPAT'),
         defaultValue:'LIBER'

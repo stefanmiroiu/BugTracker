@@ -4,12 +4,13 @@ const { sequelize } = require('../config/db');
 const echipa = sequelize.define('echipa',{
     nume_echipa:{
         type:DataTypes.STRING,
-        primaryKey:true,
         unique:true,
         allowNull:false
     },
     id_echipa:{
         type:DataTypes.INTEGER,
+        primaryKey:true,
+        unique:true,
         autoIncrement:true
     },
     descriere:{

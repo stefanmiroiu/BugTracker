@@ -3,8 +3,8 @@ const utilizator = require('./utilizator');
 const proiect = require('./proiect');
 
 
-utilizator.belongsTo(echipa,{foreignKey: 'nume_echipa'});
-echipa.hasMany(utilizator,{foreignKey: 'nume_echipa'});
+utilizator.belongsTo(echipa,{foreignKey: 'id_echipa'});
+echipa.hasMany(utilizator,{foreignKey: 'id_echipa'});
 echipa.hasMany(proiect, {
     foreignKey: 'id_echipa', 
 });

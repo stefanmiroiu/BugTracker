@@ -5,6 +5,7 @@ const echipa = require('../models/echipa.js');
 
 exports.register = async (req, res)=>{
     const{nume, prenume, mail, parola, rol,nume_echipa, descriere}=req.body;
+    let id_echipa = null;
     try{
         if(rol=="MP"){
             const echipaExistenta = await echipa.findOne({where:{nume_echipa}});
@@ -16,6 +17,7 @@ exports.register = async (req, res)=>{
             const echipaNoua = await echipa.create({nume_echipa,
                 descriere
             });
+            id_echipa = echipaNoua.id_echipa;
         }
         }
         const utilizatorExistent = await utilizator.findOne({where:{mail}});
@@ -30,7 +32,8 @@ exports.register = async (req, res)=>{
                 mail,
                 parola:hashedParola,
                 rol,
-                nume_echipa:rol==='MP' ? nume_echipa:null
+                nume_echipa:rol==='MP' ? nume_echipa:null,
+                id_echipa:rol==='MP' ? id_echipa:null
                 });
         }
         res.status(201).json({message:"Utilizator inregistrat cu succes.",
