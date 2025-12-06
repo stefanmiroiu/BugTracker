@@ -33,7 +33,6 @@ exports.register = async (req, res)=>{
                 nume_echipa:rol==='MP' ? nume_echipa:null
                 });
         }
-        //fa asta daca rolul este mp
         res.status(201).json({message:"Utilizator inregistrat cu succes.",
             id:utilizator.id
         });
@@ -54,7 +53,7 @@ exports.login = async(req, res)=>{
         if(!utilizatorLogare){
             return res.status(404).json({message:"Utilizatorul nu exista!"});
         }
-        const potrivire = await bcrypt.compare(utilizator.parola, parola);
+        const potrivire = await bcrypt.compare(utilizatorLogare.parola, parola);
         if(!potrivire){
             return res.status(401).json({message:"Parola este gresita!"});
         }

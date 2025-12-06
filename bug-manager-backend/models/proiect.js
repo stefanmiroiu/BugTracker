@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db');
 
-const echipa = sequelize.define('proiect',{
+const proiect = sequelize.define('proiect',{
     nume_proiect:{
         type:DataTypes.STRING,
         unique:true,

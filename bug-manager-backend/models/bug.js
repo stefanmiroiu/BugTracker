@@ -29,6 +29,9 @@ const bug = sequelize.define('bug',{
     prioritate:{
         type:DataTypes.ENUM('Urgent', 'Mare', 'Medie', 'Mica')
     },
+    status:{
+        type:DataTypes.ENUM('Nou', 'In lucru', 'Finalizat')
+    },
     link:{
         type:DataTypes.STRING,
         validate:{isUrl:true},
