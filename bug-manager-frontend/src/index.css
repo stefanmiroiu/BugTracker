@@ -1,0 +1,129 @@
+/* Resetare si Stiluri de Baza */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f3f4f6; /* Gri deschis */
+  color: #1f2937; /* Gri inchis pentru text */
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Stiluri pentru Butoane */
+button {
+  background-color: #2563eb; /* Albastru principal */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background-color: #1d4ed8; /* Albastru mai inchis la hover */
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button.secondary {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+button.secondary:hover {
+  background-color: #d1d5db;
+}
+
+button.danger {
+  background-color: #ef4444;
+}
+
+button.danger:hover {
+  background-color: #dc2626;
+}
+
+/* Stiluri pentru Formulare */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Stiluri pentru Containere (Carduri) */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
+}
+
+.card h3, .card h4 {
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.navbar {
+  background-color: #1e3a8a; /* Albastru inchis elegant */
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Utilitare */
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.flex-gap { display: flex; gap: 10px; }
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.badge-Nou { background-color: #bfdbfe; color: #1e40af; }
+.badge-In_lucru { background-color: #fef3c7; color: #92400e; } /* Galben */
+.badge-Finalizat { background-color: #d1fae5; color: #065f46; } /* Verde */

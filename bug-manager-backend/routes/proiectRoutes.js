@@ -11,5 +11,6 @@ router.get('/echipa', proiectController.getMyTeamProjects);
 
 router.post('/', proiectController.addProject);
 
+router.post('/join', proiectController.joinProject);
 
 module.exports = router;

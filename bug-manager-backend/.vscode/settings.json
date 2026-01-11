@@ -1,0 +1,8 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/c4a53c27-6450-484d-b7af-7eb84a10665a/resourceGroups/ProiectTW/providers/Microsoft.Web/sites/bugManagerApp",
+    "appService.deploySubpath": ".",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ]
+}

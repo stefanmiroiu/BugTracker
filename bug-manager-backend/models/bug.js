@@ -7,7 +7,7 @@ const bug = sequelize.define('bug',{
         primaryKey:true,
         autoIncrement:true
     },
-    id_proiet:{
+    id_proiect:{
         type:DataTypes.INTEGER,
         allowNull:false
     },

@@ -1,5 +1,6 @@
 const proiect = require('../models/proiect');
 const echipa = require('../models/echipa'); 
+const utilizator = require('../models/utilizator');
 const { Op } = require('sequelize'); 
 
 exports.getAllTeamsWithProjects = async (req, res) => {
@@ -12,7 +13,7 @@ exports.getAllTeamsWithProjects = async (req, res) => {
             }]
         });
 
-        res.status(200).json(teams);
+        res.status(200).json(echipe);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Eroare la obținerea echipelor cu proiecte.', error: error.message });
@@ -52,7 +53,7 @@ exports.addProject = async (req, res) => {
             return res.status(400).json({ message: 'Numele și descrierea proiectului sunt obligatorii.' });
         }
         
-        const proiectNou = await proiect.create({
+        await proiect.create({
             nume_proiect,
             descriere,
             id_echipa: id_echipa 
@@ -65,5 +66,32 @@ exports.addProject = async (req, res) => {
         }
         console.error(error);
         res.status(500).json({ message: 'Eroare la adăugarea proiectului.', error: error.message });
+    }
+};
+
+exports.joinProject = async (req, res) => {
+    if (req.utilizator.rol !== 'TST') {
+        return res.status(403).json({ message: 'Doar testerii se pot alătura proiectelor.' });
+    }
+
+    const { id_proiect } = req.body;
+    const id_user = req.utilizator.id;
+
+    try {
+        const proiectGasit = await proiect.findByPk(id_proiect);
+        const userGasit = await utilizator.findByPk(id_user);
+
+        if (!proiectGasit) {
+            return res.status(404).json({ message: 'Proiectul nu a fost găsit.' });
+        }
+
+
+        await userGasit.addProiecteTestate(proiectGasit);
+
+        res.status(200).json({ message: `Te-ai alăturat cu succes proiectului ${proiectGasit.nume_proiect}.` });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Eroare la alăturarea la proiect.', error: error.message });
     }
 };
