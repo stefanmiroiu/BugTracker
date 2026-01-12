@@ -1,4 +1,3 @@
-/* Resetare si Stiluri de Baza */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,8 +6,8 @@
 }
 
 body {
-  background-color: #f3f4f6; /* Gri deschis */
-  color: #1f2937; /* Gri inchis pentru text */
+  background-color: #f3f4f6; 
+  color: #1f2937; 
   line-height: 1.6;
 }
 
@@ -17,9 +16,8 @@ a {
   color: inherit;
 }
 
-/* Stiluri pentru Butoane */
 button {
-  background-color: #2563eb; /* Albastru principal */
+  background-color: #2563eb; 
   color: white;
   border: none;
   padding: 10px 20px;
@@ -31,7 +29,7 @@ button {
 }
 
 button:hover {
-  background-color: #1d4ed8; /* Albastru mai inchis la hover */
+  background-color: #1d4ed8; 
 }
 
 button:active {
@@ -55,7 +53,6 @@ button.danger:hover {
   background-color: #dc2626;
 }
 
-/* Stiluri pentru Formulare */
 input, select, textarea {
   width: 100%;
   padding: 10px;
@@ -73,7 +70,6 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-/* Stiluri pentru Containere (Carduri) */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -94,7 +90,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .navbar {
-  background-color: #1e3a8a; /* Albastru inchis elegant */
+  background-color: #1e3a8a; 
   color: white;
   padding: 15px 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -112,7 +108,6 @@ input:focus, select:focus, textarea:focus {
   font-weight: bold;
 }
 
-/* Utilitare */
 .text-center { text-align: center; }
 .mt-20 { margin-top: 20px; }
 .flex-gap { display: flex; gap: 10px; }
@@ -125,5 +120,5 @@ input:focus, select:focus, textarea:focus {
   text-transform: uppercase;
 }
 .badge-Nou { background-color: #bfdbfe; color: #1e40af; }
-.badge-In_lucru { background-color: #fef3c7; color: #92400e; } /* Galben */
-.badge-Finalizat { background-color: #d1fae5; color: #065f46; } /* Verde */
+.badge-In_lucru { background-color: #fef3c7; color: #92400e; } 
+.badge-Finalizat { background-color: #d1fae5; color: #065f46; } 

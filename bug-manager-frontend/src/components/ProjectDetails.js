@@ -52,7 +52,6 @@ const ProjectDetails = () => {
 
             <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
                 
-                {/* Coloana Stanga: Formular (doar TST) sau Info */}
                 <div style={{ flex: 1, minWidth: '300px' }}>
                     {rol === 'TST' ? (
                         <div className="card" style={{ borderTop: '5px solid #ef4444' }}>
@@ -90,7 +89,6 @@ const ProjectDetails = () => {
                     )}
                 </div>
 
-                {/* Coloana Dreapta: Lista Bug-uri */}
                 <div style={{ flex: 2, minWidth: '300px' }}>
                     {bugs.length === 0 ? <div className="card text-center"><p>Niciun bug raportat. Totul e curat! 🎉</p></div> : null}
                     
@@ -110,7 +108,6 @@ const ProjectDetails = () => {
 
                             {bug.link && <a href={bug.link} target="_blank" rel="noreferrer" style={{ color: '#2563eb', fontSize: '0.9rem', display: 'block', marginBottom: '15px' }}>🔗 Vezi Link Referință</a>}
 
-                            {/* Zona de Editare pentru MP */}
                             {rol === 'MP' && (
                                 <div style={{ marginTop: '15px', paddingTop: '15px', borderTop: '1px dashed #e5e7eb' }}>
                                     {editBugId === bug.id_bug ? (

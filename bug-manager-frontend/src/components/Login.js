@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../api';
 
-// Primim prop-ul onLoginSuccess
 const Login = ({ onLoginSuccess }) => {
     const [mail, setMail] = useState('');
     const [parola, setParola] = useState('');
@@ -19,10 +18,8 @@ const Login = ({ onLoginSuccess }) => {
             const payload = JSON.parse(atob(response.data.token.split('.')[1]));
             localStorage.setItem('rol', payload.rol);
 
-            // 1. Anuntam App-ul ca ne-am logat (ca sa schimbe meniul instant)
             if(onLoginSuccess) onLoginSuccess();
 
-            // 2. Navigam
             if (payload.rol === 'MP') navigate('/dashboard-mp');
             else navigate('/dashboard-tst');
 

@@ -10,7 +10,6 @@ import ProjectDetails from './components/ProjectDetails';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
   const [rol, setRol] = useState(localStorage.getItem('rol'));
-  // Stare noua pentru nume
   const [numeUser, setNumeUser] = useState(localStorage.getItem('userNume') || '');
 
   useEffect(() => {
@@ -31,7 +30,7 @@ function App() {
   const handleLoginSuccess = () => {
       setIsAuthenticated(true);
       setRol(localStorage.getItem('rol'));
-      setNumeUser(localStorage.getItem('userNume')); // Actualizam numele imediat dupa login
+      setNumeUser(localStorage.getItem('userNume')); 
   };
 
   return (
@@ -53,7 +52,7 @@ function App() {
                         </>
                     ) : (
                         <>
-                            {/* AICI APARE MESAJUL DE BUN VENIT */}
+                            
                             <span style={{ marginRight: '15px', fontWeight: 'bold', fontSize: '0.9rem' }}>
                                 👋 Bine ai venit, {numeUser}!
                             </span>
