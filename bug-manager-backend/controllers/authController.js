@@ -76,9 +76,22 @@ exports.login = async(req, res)=>{
         res.status(200).json({token, 
             nume: utilizatorLogare.nume,
             prenume: utilizatorLogare.prenume,
+            nume_echipa: utilizatorLogare.nume_echipa,
             message:"Conectare reusita."});
     }catch(error){
         console.error(error);
         res.status(500).json({message:"Eroare la logare: ", error:error.message})
     }
 }
+
+exports.getTeams = async (req, res) => {
+    try {
+        const echipe = await echipa.findAll({
+            attributes: ['id_echipa', 'nume_echipa'] 
+        });
+        res.status(200).json(echipe);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Eroare la preluarea echipelor." });
+    }
+};

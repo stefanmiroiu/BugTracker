@@ -17,7 +17,7 @@ const Login = ({ onLoginSuccess }) => {
             localStorage.setItem('userNume', numeComplet);
             const payload = JSON.parse(atob(response.data.token.split('.')[1]));
             localStorage.setItem('rol', payload.rol);
-
+            localStorage.setItem('nume_echipa', response.data.nume_echipa)
             if(onLoginSuccess) onLoginSuccess();
 
             if (payload.rol === 'MP') navigate('/dashboard-mp');

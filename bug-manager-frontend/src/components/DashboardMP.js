@@ -5,6 +5,7 @@ import api from '../api';
 const DashboardMP = () => {
     const [projects, setProjects] = useState([]);
     const [newProj, setNewProj] = useState({ nume_proiect: '', descriere: '' });
+    const teamName = localStorage.getItem('nume_echipa');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -33,7 +34,20 @@ const DashboardMP = () => {
 
     return (
         <div className="container">
-            <h1 style={{ marginBottom: '20px', color: '#1e3a8a' }}>Panou Manager Proiect</h1>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                <h1 style={{ color: '#1e3a8a', margin: 0 }}>Panou Membru Proiect</h1>
+                
+                <div style={{ 
+                    backgroundColor: '#dbeafe', 
+                    color: '#1e40af', 
+                    padding: '8px 16px', 
+                    borderRadius: '20px', 
+                    fontWeight: 'bold',
+                    border: '1px solid #93c5fd'
+                }}>
+                    Echipa: {teamName || 'Nespecificată'}
+                </div>
+            </div>
             
             <div className="card" style={{ borderLeft: '5px solid #2563eb' }}>
                 <h3>🚀 Adaugă Proiect Nou</h3>

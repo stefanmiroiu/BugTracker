@@ -49,4 +49,5 @@ const utilizator = sequelize.define('utilizator',{
     },
   
 );
+
 module.exports = utilizator;

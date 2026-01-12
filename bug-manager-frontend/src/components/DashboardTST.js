@@ -4,6 +4,7 @@ import api from '../api';
 
 const DashboardTST = () => {
     const [echipe, setEchipe] = useState([]);
+    const [joinedProjects, setJoinedProjects] = useState(new Set());
 
     useEffect(() => {
         const fetchEchipe = async () => {
@@ -20,9 +21,14 @@ const DashboardTST = () => {
     const joinProject = async (id_proiect) => {
         try {
             await api.post('/projects/join', { id_proiect });
-            alert("Succes! Te-ai alăturat proiectului.");
-            window.location.href = `/proiect/${id_proiect}`;
+        
+            setJoinedProjects(prev => new Set(prev).add(id_proiect));
+
         } catch (err) {
+            
+            if (err.response?.status === 400) {
+                 setJoinedProjects(prev => new Set(prev).add(id_proiect));
+            }
             alert("Eroare: " + err.response?.data?.message);
         }
     };
@@ -37,23 +43,38 @@ const DashboardTST = () => {
                     <h3 style={{ borderBottom: '1px solid #e5e7eb', paddingBottom: '10px', marginBottom: '15px' }}>
                         🏢 Echipa: <span style={{ color: '#2563eb' }}>{echipa.nume_echipa}</span>
                     </h3>
-                    
+
                     {echipa.proiects && echipa.proiects.length > 0 ? (
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '15px' }}>
-                            {echipa.proiects.map(proj => (
+                            {echipa.proiects.map(proj => {
+                                
+                                const isJoined = joinedProjects.has(proj.id_proiect);
+
+                                return (
                                 <div key={proj.id_proiect} style={{ background: '#f9fafb', padding: '15px', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
                                     <strong style={{ fontSize: '1.1rem' }}>{proj.nume_proiect}</strong>
                                     <p style={{ fontSize: '0.9rem', color: '#4b5563', margin: '5px 0 15px 0' }}>{proj.descriere}</p>
                                     <div className="flex-gap">
-                                        <button onClick={() => joinProject(proj.id_proiect)} style={{ flex: 1 }}>
-                                            Join +
+        
+                                        <button
+                                            onClick={() => !isJoined && joinProject(proj.id_proiect)} 
+                                            style={{
+                                                flex: 1,
+                                                
+                                                backgroundColor: isJoined ? '#22c55e' : undefined,
+                                                color: isJoined ? 'white' : undefined,
+                                                borderColor: isJoined ? '#22c55e' : undefined,
+                                                cursor: isJoined ? 'default' : 'pointer'
+                                            }}
+                                        >
+                                            {isJoined ? 'Joined ✓' : 'Join +'}
                                         </button>
                                         <Link to={`/proiect/${proj.id_proiect}`} style={{ flex: 1 }}>
                                             <button className="secondary" style={{ width: '100%' }}>Detalii</button>
                                         </Link>
                                     </div>
                                 </div>
-                            ))}
+                            )})}
                         </div>
                     ) : <p style={{ fontStyle: 'italic', color: '#9ca3af' }}>Această echipă nu are proiecte active.</p>}
                 </div>

@@ -48,7 +48,7 @@ const ProjectDetails = () => {
 
     return (
         <div className="container">
-            <h2 style={{ marginBottom: '20px', color: '#1e3a8a' }}>Bug Tracker - Proiect #{id}</h2>
+            <h2 style={{ marginBottom: '20px', color: '#1e3a8a' }}>Bug Manager - Proiect #{id}</h2>
 
             <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
                 
@@ -83,7 +83,7 @@ const ProjectDetails = () => {
                         </div>
                     ) : (
                         <div className="card">
-                            <h3>Info Manager</h3>
+                            <h3>Info</h3>
                             <p style={{ color: '#6b7280' }}>Gestionează statusul bug-urilor raportate de testeri. Asigură-te că link-urile de soluționare sunt valide.</p>
                         </div>
                     )}
@@ -113,11 +113,20 @@ const ProjectDetails = () => {
                                     {editBugId === bug.id_bug ? (
                                         <form onSubmit={handleUpdateStatus} style={{ background: '#f9fafb', padding: '15px', borderRadius: '6px' }}>
                                             <label>Schimbă Status</label>
+                                            
                                             <select onChange={e => setStatusUpdate({...statusUpdate, status: e.target.value})} required>
                                                 <option value="">Selectează...</option>
-                                                <option value="In lucru">In lucru</option>
-                                                <option value="Finalizat">Finalizat</option>
+                                                
+            
+                                                {bug.status === 'Nou' && (
+                                                    <option value="In lucru">In lucru</option>
+                                                )}
+
+                                                {bug.status === 'In lucru' && (
+                                                    <option value="Finalizat">Finalizat</option>
+                                                )}
                                             </select>
+
                                             {statusUpdate.status === 'Finalizat' && (
                                                 <input placeholder="Link Commit Solutie (GitHub)" onChange={e => setStatusUpdate({...statusUpdate, link: e.target.value})} style={{ marginTop: '10px' }} />
                                             )}
@@ -127,10 +136,15 @@ const ProjectDetails = () => {
                                             </div>
                                         </form>
                                     ) : (
-                                        <button className="secondary" onClick={() => {
-                                            setEditBugId(bug.id_bug);
-                                            setStatusUpdate({ status: '', link: '' });
-                                        }} style={{ width: '100%', fontSize: '0.9rem' }}>Modifică Status / Soluționează</button>
+                                        bug.status !== 'Finalizat' ? (
+                                            <button className="secondary" onClick={() => {
+                                                setEditBugId(bug.id_bug);
+                                                setStatusUpdate({ status: '', link: '' });
+                                            }} style={{ width: '100%', fontSize: '0.9rem' }}>Modifică Status / Soluționează</button>
+                                        ) : (
+                    
+                                            <p style={{ color: '#10b981', fontWeight: 'bold', fontSize: '0.9rem', textAlign: 'center', margin: 0 }}>✓ Acest bug a fost soluționat</p>
+                                        )
                                     )}
                                 </div>
                             )}
