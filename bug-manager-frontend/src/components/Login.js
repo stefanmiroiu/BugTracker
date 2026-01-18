@@ -32,6 +32,7 @@ const Login = ({ onLoginSuccess }) => {
         <div className="container" style={{ display: 'flex', justifyContent: 'center', paddingTop: '50px' }}>
             <div className="card" style={{ maxWidth: '400px', width: '100%' }}>
                 <h2 className="text-center" style={{ marginBottom: '20px' }}>Bine ai revenit!</h2>
+                <h2 className="text-center" style={{ marginBottom: '20px' }}>TESTER/MP</h2>
                 {error && <div style={{ background: '#fee2e2', color: '#b91c1c', padding: '10px', borderRadius: '6px', marginBottom: '15px', fontSize: '0.9rem' }}>{error}</div>}
                 <form onSubmit={handleLogin}>
                     <label style={{ fontSize: '0.9rem', fontWeight: '600', color: '#4b5563' }}>Email</label>

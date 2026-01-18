@@ -1,75 +1,110 @@
+/* =========================================
+   1. CONFIGURARE "TOXIC THEME"
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Creepster&family=VT323&display=swap');
+
+:root {
+  /* PALETA "JOKER / TOXIC" */
+  --toxic-green: #39ff14;       /* Verde neon pur */
+  --slime-green: #ccff00;       /* Verde-gălbui acid */
+  
+  --deep-purple: #2e0249;       /* Mov foarte închis (fundal) */
+  --vivid-purple: #a200ff;      /* Mov electric */
+  --light-purple: #e9d5ff;      /* Mov deschis (text) */
+  
+  --border-thick: 3px;
+  --glow: 0 0 10px var(--toxic-green);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* =========================================
+   2. FUNDAL & TEXT (ATMOSFERĂ DARK)
+   ========================================= */
 body {
-  background-color: #f3f4f6; 
-  color: #1f2937; 
-  line-height: 1.6;
+  background-color: #0f001e; /* Aproape negru, tentă mov */
+  color: var(--light-purple);
+  font-family: 'VT323', monospace;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  
+  /* Textură de perete murdar + gradient mov */
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(162, 0, 255, 0.15), transparent 60%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  background-attachment: fixed;
 }
 
 a {
+  color: var(--toxic-green);
   text-decoration: none;
-  color: inherit;
+  border-bottom: 2px dashed var(--vivid-purple);
+  transition: all 0.3s ease;
 }
 
-button {
-  background-color: #2563eb; 
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: background-color 0.2s, transform 0.1s;
+a:hover {
+  background-color: var(--toxic-green);
+  color: #000;
+  box-shadow: var(--glow);
+  border-bottom-style: solid;
 }
 
-button:hover {
-  background-color: #1d4ed8; 
+/* =========================================
+   3. TITLURI & LOGO (GRAFFITI STYLE)
+   ========================================= */
+h1, h2, h3, h4 {
+  font-family: 'Permanent Marker', cursive;
+  color: var(--slime-green);
+  text-shadow: 4px 4px 0px var(--vivid-purple); /* Umbra mov dură */
+  letter-spacing: 1px;
+  transform: rotate(-1deg);
+  margin-bottom: 1rem;
 }
 
-button:active {
-  transform: scale(0.98);
+/* =========================================
+   4. NAVBAR - "THE SLUDGE BAR"
+   ========================================= */
+.navbar {
+  background: var(--deep-purple);
+  border-bottom: 4px solid var(--toxic-green);
+  padding: 15px 0;
+  margin-bottom: 40px;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.3); /* Glow verde */
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-button.secondary {
-  background-color: #e5e7eb;
-  color: #374151;
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-button.secondary:hover {
-  background-color: #d1d5db;
+.logo {
+  font-family: 'Creepster', cursive; /* Font horror/topit */
+  font-size: 2.5rem;
+  color: var(--toxic-green);
+  text-shadow: 0 0 10px var(--toxic-green), 3px 3px 0 #000;
+  animation: flicker 3s infinite alternate;
 }
 
-button.danger {
-  background-color: #ef4444;
+/* Animație de neon defect */
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.5; }
 }
 
-button.danger:hover {
-  background-color: #dc2626;
-}
-
-input, select, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background-color: #fff;
-  font-size: 1rem;
-  transition: border-color 0.2s;
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
+/* =========================================
+   5. CONTAINER & CARDS (URBAN LOOK)
+   ========================================= */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -77,48 +112,155 @@ input:focus, select:focus, textarea:focus {
 }
 
 .card {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  margin-bottom: 20px;
-}
-
-.card h3, .card h4 {
-  color: #111827;
-  margin-bottom: 10px;
-}
-
-.navbar {
-  background-color: #1e3a8a; 
-  color: white;
-  padding: 15px 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: rgba(46, 2, 73, 0.8); /* Mov transparent */
+  border: 2px solid var(--vivid-purple);
+  padding: 30px;
   margin-bottom: 30px;
+  position: relative;
+  
+  /* Umbra opusă: Mov vs Verde */
+  box-shadow: 8px 8px 0px var(--toxic-green);
+  
+  /* Colț tăiat (Cyber style) */
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 20px), 
+    calc(100% - 20px) 100%, 
+    0 100%
+  );
+  transition: transform 0.2s;
 }
 
-.nav-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px var(--slime-green);
+  border-color: var(--toxic-green);
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+.card h3 {
+  color: #fff;
+  text-shadow: 3px 3px 0 var(--vivid-purple);
+  border-bottom: 2px solid var(--toxic-green);
+  padding-bottom: 10px;
+  display: inline-block;
 }
 
-.text-center { text-align: center; }
-.mt-20 { margin-top: 20px; }
-.flex-gap { display: flex; gap: 10px; }
+/* =========================================
+   6. INPUTS (DARK MODE)
+   ========================================= */
+input, select, textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #1a052b;
+  border: 2px solid var(--vivid-purple);
+  color: var(--toxic-green);
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+  border-radius: 4px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--toxic-green);
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+}
+
+/* =========================================
+   7. BUTOANE - "ACTION"
+   ========================================= */
+button {
+  background: var(--vivid-purple);
+  color: #fff;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.1rem;
+  padding: 12px 30px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  
+  /* Formă distorsionată (Skew) */
+  transform: skew(-10deg);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+  transition: all 0.2s;
+  margin-right: 10px;
+}
+
+/* Textul din interior îl îndreptăm înapoi */
+button span {
+  display: block;
+  transform: skew(10deg);
+}
+
+button:hover {
+  background: var(--toxic-green);
+  color: #000;
+  box-shadow: 0 0 20px var(--toxic-green);
+  transform: skew(-10deg) translateY(-2px);
+}
+
+button.secondary {
+  background: transparent;
+  border: 2px solid var(--light-purple);
+  color: var(--light-purple);
+}
+
+button.secondary:hover {
+  background: var(--light-purple);
+  color: #2e0249;
+  box-shadow: 0 0 15px var(--light-purple);
+}
+
+button.danger {
+  background: #ff0055; /* Un roz-roșu pentru contrast */
+  color: #fff;
+}
+
+button.danger:hover {
+  background: #ff0000;
+  box-shadow: 0 0 15px #ff0000;
+}
+
+/* =========================================
+   8. BADGES & EXTRAS
+   ========================================= */
 .badge {
   display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
+  padding: 4px 12px;
+  font-family: 'VT323', monospace;
   font-weight: bold;
+  font-size: 1.1rem;
   text-transform: uppercase;
+  border: 1px solid currentColor;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
 }
-.badge-Nou { background-color: #bfdbfe; color: #1e40af; }
-.badge-In_lucru { background-color: #fef3c7; color: #92400e; } 
-.badge-Finalizat { background-color: #d1fae5; color: #065f46; } 
+
+.badge-Nou {
+  background: #2e0249;
+  color: var(--toxic-green);
+  border-color: var(--toxic-green);
+}
+
+.badge-In_lucru {
+  background: #2e0249;
+  color: var(--slime-green);
+  border-color: var(--slime-green);
+}
+
+.badge-Finalizat {
+  background: var(--toxic-green);
+  color: #000;
+  border-color: var(--toxic-green);
+}
+
+/* Helpers */
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.flex-gap { display: flex; gap: 15px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-content { flex-direction: column; gap: 10px; }
+  .card { margin-left: 10px; margin-right: 10px; }
+}
