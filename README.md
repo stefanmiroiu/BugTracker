@@ -9,7 +9,7 @@
 ### 2. Local Setup
 
 **Clone the repository:**
-`git clone https://github.com/aurelliaaa23/Proiect-Tehnologii-Web---Echipa-NovaWeb.git`
+`git clone https://github.com/stefanmiroiu/BugTracker.git`
 
 **Install dependencies:**
 `npm install`
